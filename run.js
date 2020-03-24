@@ -181,6 +181,12 @@ chrome.extension.sendRequest(
         var segment = field.segment;
         if (segment && segment > 0) {
           //TODO 需要知道页面元素的id或者name 是否有规律或者有顺序,
+          var select = "";
+          for (i == 0; i < segment; i++) {
+            $(field.selector + i)
+              .focus()
+              .val(value);
+          }
         } else {
           $(field.selector)
             .focus()
