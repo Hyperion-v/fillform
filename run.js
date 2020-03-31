@@ -162,23 +162,24 @@ chrome.extension.sendRequest(
     args: []
   },
   function(response) {
-    debugger;
-    if (deepAutofillChromeExtensionSettings) {
-      if (deepAutofillChromeExtensionSettings.randomLocale) {
-        console.info(
-          "setting locale",
-          deepAutofillChromeExtensionSettings.randomLocale
-        );
-        faker.locale = deepAutofillChromeExtensionSettings.randomLocale;
-      }
+    if (response) {
+      // if (response.randomLocale) {
+      //   // console.info(
+      //   //   "setting locale",
+      //   //   deepAutofillChromeExtensionSettings.randomLocale
+      //   // );
+      //   faker.locale = response.randomLocale;
+      // }
       for (
         var i = 0;
-        i < deepAutofillChromeExtensionSettings.fields.length;
+        i < response.fields.length;
         i++
       ) {
-        var field = deepAutofillChromeExtensionSettings.fields[i];
+        var field = response.fields[i];
         var value = field.static;
         var segment = field.segment;
+        var autofill = field.auto;
+
         if (segment && segment > 0) {
           //TODO 需要知道页面元素的id或者name 是否有规律或者有顺序,
           var select = "";
@@ -187,14 +188,15 @@ chrome.extension.sendRequest(
               .focus()
               .val(value);
           }
-        } else {
+        }
+        else {
           $(field.selector)
             .focus()
             .val(value);
         }
 
-        debugger;
-        console.debug(field.selector, value);
+        // debugger;
+        // console.debug(field.selector, value);
       }
     } else {
       $("input:enabled, select:enabled, textarea:enabled")

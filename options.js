@@ -11,44 +11,72 @@ function msg(title, message) {
   );
 }
 
-var demoSettings = {
-  案例1: {
-    randomLocale: "zh_CN",
-    fields: [
-      {
-        selector: "#textbox4",
-        segment: 3,
-        static: "选取Id为textbox4 并设置值为电量123132"
-      },
-      {
-        selector: ":input",
-        static: "选取所有的input按钮"
-      }
-    ]
-  }
-};
-// var demoSettings =  {
-//   "Deep Auto Fill Chrome Demo" : {
-//     "randomLocale" : "de",
-//     "fields" : [
-//       {
-//         "selector" : "#textbox2",
-//         "random": "A bunch of random values: {{name.lastName}}, {{name.firstName}} {{name.suffix}}"
-//       },
-//       {
-//         "selector" : "input[name=textbox1]",
-//         "random": "A bunch of another random values: {{internet.email}}, {{helpers.createCard}} {{address.secondaryAddress}}",
-//         "static" : "A static value"
-//       },
-//       {
-//         "selector" : "#textbox4",
-//         "static" : "A static value"
-//       }
-//     ]
-//   }
+
+
+//  var demoSettings ={
+//   "案例1-test1.html": {
+//   "randomLocale": "de",
+//       "url":"test1.html",
+//       "fields": [
+//     {
+//       "selector": "input[name='textbox3']",
+//       "static": "填充文本"
+//     },
+//     {
+//       "selector": "input[name='textbox4']",
+//       "static": "填充数字"
+//     }
+//
+//
+//   ]
+// }
 // }
 
+// var demoSettings ={
+//     "案例1": {
+//         "randomLocale": "de",
+//         "url":"119l",
+//         "auto": true,
+//         "fields": [
+//             {
+//                 "selector": "input[name='textbox3']",
+//                 "static": "填充文本"
+//             },
+//             {
+//                 "selector": "input[name='textbox4']",
+//                 "static": "填充数字"
+//             }
+//
+//
+//         ]
+//     }
+// }
+//
+
+var demoSettings ={
+    "案例1": {
+        "randomLocale": "de",
+        "url":"form",
+        "auto": true,
+        "fields": [
+            {
+                "selector": ":input",
+                "static": "填充文本"
+            }
+            // {
+            //     "selector": input",
+            //     "static": "填充数字"
+            // }
+
+
+        ]
+    }
+}
+
+
+
 jQuery(function($) {
+  debugger;
   var text = localStorage.settings
     ? localStorage.settings
     : JSON.stringify(demoSettings, null, "\t");
